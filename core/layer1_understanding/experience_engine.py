@@ -28,6 +28,7 @@ class DateRange:
     start: date
     end: date
     source_text: str
+    offset: int = 0
 
 
 class ExperienceEngine:
@@ -84,6 +85,7 @@ class ExperienceEngine:
             start_raw = (m.group("start") or "").strip()
             end_raw = (m.group("end") or "").strip()
             src = m.group(0).strip()
+            offset = m.start()
 
             start_dt = self._parse_date_safe(start_raw)
             end_dt = self._parse_date_safe(self._normalize_present(end_raw))
@@ -99,7 +101,7 @@ class ExperienceEngine:
                     logger.warning("Skipping inverted date range after swap: %r", src)
                     continue
 
-            ranges.append(DateRange(start=start_dt, end=end_dt, source_text=src))
+            ranges.append(DateRange(start=start_dt, end=end_dt, source_text=src, offset=offset))
 
         # --- SECONDARY REGEX FALLBACK ---
         if not ranges:
@@ -108,6 +110,7 @@ class ExperienceEngine:
                 start_raw = (m.group("start") or "").strip()
                 end_raw = (m.group("end") or "").strip()
                 src = m.group(0).strip()
+                offset = m.start()
 
                 start_dt = self._parse_date_safe(start_raw)
                 end_dt = self._parse_date_safe(self._normalize_present(end_raw))
@@ -120,7 +123,7 @@ class ExperienceEngine:
                     if start_dt > end_dt:
                         continue
 
-                ranges.append(DateRange(start=start_dt, end=end_dt, source_text=src))
+                ranges.append(DateRange(start=start_dt, end=end_dt, source_text=src, offset=offset))
 
         if not ranges:
             logger.info("No date ranges detected in experience text.")

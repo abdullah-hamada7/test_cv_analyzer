@@ -313,4 +313,30 @@ def _norm(s: str) -> str:
 
 # Empty by default to be industry-agnostic. 
 # Can be populated via config files for specific domains.
-_DEFAULT_SKILL_MAP: Dict[str, str] = {}
+_DEFAULT_SKILL_MAP: Dict[str, str] = {
+    "k8s": "Kubernetes",
+    "kustomization": "Kustomize",
+    "js": "JavaScript",
+    "ts": "TypeScript",
+    "py": "Python",
+    "aws": "AWS",
+    "amazon web services": "AWS",
+    "gcp": "GCP",
+    "google cloud platform": "GCP",
+    "azure": "Azure",
+    "postgres": "PostgreSQL",
+    "pg": "PostgreSQL",
+    "mssql": "SQL Server",
+    "sql server": "SQL Server",
+    "docker-compose": "Docker Compose",
+    "gh actions": "GitHub Actions",
+    "github actions": "GitHub Actions",
+    "actions": "GitHub Actions",
+    "gitlab-ci": "GitLab CI",
+    "jenkins": "Jenkins",
+    "terraform": "Terraform",
+    "ansible": "Ansible",
+    "bash": "Bash",
+    "shell": "Bash",
+    "sh": "Bash"
+}

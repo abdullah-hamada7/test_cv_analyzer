@@ -208,7 +208,9 @@ class SemanticSegmenter:
                 next_section, conf = detected
 
                 # Guard against over-triggering on short bullet-like lines
-                if _looks_like_bullet(line) and next_section != "skills":
+                # OR lines that look like details (GPA, degree names, or just too long for a clean header)
+                is_detail = any(x in line.lower() for x in ["gpa", "b.sc", "m.sc", "bachelor", "master", "graduated"])
+                if (_looks_like_bullet(line) or is_detail or len(line.split()) > 5) and next_section != "skills":
                     buf.append(line)
                     continue
 

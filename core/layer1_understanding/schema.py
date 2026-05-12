@@ -78,6 +78,15 @@ class ExperienceSection(StrictModel):
     confidence_score: ConfidenceScore = 0.0
 
 
+class EducationItem(StrictModel):
+    institution: Optional[str] = None
+    degree: Optional[str] = None
+    field_of_study: Optional[str] = None
+    start_date: Optional[date] = None
+    end_date: Optional[date] = None
+    gpa: Optional[str] = None
+
+
 class AnalysisSection(StrictModel):
     summary: Optional[str] = None
     predicted_role: Optional[str] = None
@@ -87,6 +96,7 @@ class AnalysisSection(StrictModel):
     gaps: List[str] = Field(default_factory=list)
     red_flags: List[str] = Field(default_factory=list)
     confidence_score: ConfidenceScore = 0.0
+    education: List[EducationItem] = Field(default_factory=list)
     metadata: Dict[str, Any] = Field(
         default_factory=dict,
         description="Reserved for model-specific analysis metadata (kept strict at top-level).",

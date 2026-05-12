@@ -13,6 +13,7 @@ from typing import Any, Dict, List, Optional, Sequence, Tuple
 from core.layer1_understanding.advanced_ner import AdvancedNEREngine
 from core.layer1_understanding.canonicalizer import DataCanonicalizer
 from core.layer1_understanding.experience_engine import ExperienceEngine
+from core.layer1_understanding.skill_scanner import SkillScanner
 from core.layer1_understanding.utils import load_layer1_config
 from core.layer1_understanding.schema import (
     AnalysisSection,
@@ -24,6 +25,7 @@ from core.layer1_understanding.schema import (
     SkillItem,
     SkillsSection,
     ContactInfo,
+    EducationItem,
 )
 from core.layer1_understanding.section_segmenter import SemanticSegmenter
 from core.layer1_understanding.spatial_parser import SpatialTextExtraction, extract_spatial_text_from_pdf
@@ -113,6 +115,8 @@ class CVOrchestrator:
         )
         self._ner = AdvancedNEREngine()
         self._experience = ExperienceEngine()
+        self._scanner = SkillScanner()
+        self._is_ready = True
         self._canonicalizer = DataCanonicalizer(
             fuzzy_threshold=self._config.canonical_fuzzy_threshold,
             embedder=self._embedder,
@@ -381,6 +385,12 @@ class CVOrchestrator:
             # Combine with global full-text skills to prevent missing overlapping tech
             skills_source.extend(entities.get("skills", []))
 
+        # Supplement with deterministic keyword scanner for maximum recall
+        scanned_skills = self._scanner.scan_text(skills_text or profile_text)
+        if scanned_skills:
+            logger.info("SkillScanner found %d skills in section.", len(scanned_skills))
+            skills_source.extend(scanned_skills)
+
         skills_raw = []
         seen_skills = set()
         for s in skills_source:
@@ -514,6 +524,10 @@ class CVOrchestrator:
         except Exception as e:
             logger.warning("Action verb scoring failed: %s", e)
 
+        # Phase 3: Education Extraction
+        education_text = segments.sections.get("education", "")
+        education_items = self._extract_education(education_text) if education_text else []
+
         # Phase 4: Seniority inference
         seniority = _infer_seniority(
             total_years=total_years,
@@ -541,6 +555,14 @@ class CVOrchestrator:
             strengths.append(f"Substantial career experience ({total_years} years) indicating deep domain knowledge.")
         if len(skill_durations) >= 5:
             strengths.append(f"Diverse technical portfolio with {len(skill_durations)} technologies used across roles.")
+            
+        # Cloud/DevOps Specific Intelligence
+        cloud_keywords = {"AWS", "Azure", "GCP", "Terraform", "Kubernetes", "Docker"}
+        identified_cloud = {s.name for s in skill_items if s.name in cloud_keywords}
+        if "Terraform" in identified_cloud and "Kubernetes" in identified_cloud:
+            strengths.append("Advanced Cloud Automation: Proficiency in both Infrastructure-as-Code (Terraform) and Container Orchestration (Kubernetes).")
+        elif "AWS" in identified_cloud:
+            strengths.append("Cloud native experience identified with AWS ecosystem.")
 
         stats = DocumentStats(
             page_count=page_count,
@@ -559,9 +581,13 @@ class CVOrchestrator:
                     parts = [p.strip() for p in re.split(r"[|•]", ln)]
                     for p in parts:
                         # If a part looks like "City, Country"
-                        if "," in p and len(p) < 30 and len(p.split()) <= 4 and not any(x in p.lower() for x in ["app", "short", "distance", "http", "www"]):
-                            final_location = p
-                            break
+                        p_low = p.lower()
+                        # Reject common tech noise in location
+                        TECH_NOISE = {"aws", "docker", "kubernetes", "terraform", "linux", "cloud", "engineer", "devops"}
+                        if "," in p and len(p) < 30 and len(p.split()) <= 4:
+                            if not any(x in p_low for x in ["app", "short", "distance", "http", "www", "github"]) and not any(t in p_low for t in TECH_NOISE):
+                                final_location = p
+                                break
                 if final_location: break
 
         # NER Fallback if still missing
@@ -643,6 +669,7 @@ class CVOrchestrator:
                 [skills_section.confidence_score, experience_section.confidence_score],
                 default=0.0,
             ),
+            education=education_items,
             metadata={
                 "segmentation": {
                     "found_sections": list(segments.analysis.found_sections),
@@ -762,21 +789,27 @@ class CVOrchestrator:
                 )
             ]
 
-        # Order ranges by their appearance in the text to chunk the text accurately
-        positioned_ranges = []
-        for r in merged:
-            idx = experience_text.lower().find(r.source_text.lower())
-            positioned_ranges.append((max(0, idx), r))
-
-        positioned_ranges.sort(key=lambda x: x[0])
+        # Positioned ranges are now directly available via DateRange.offset
+        positioned_ranges = sorted(merged, key=lambda x: x.offset)
 
         items: List[ExperienceItem] = []
-        for i, (idx, r) in enumerate(positioned_ranges):
+        for i, r in enumerate(positioned_ranges):
             # Define text block boundaries for this specific experience
-            block_start = 0 if i == 0 else positioned_ranges[i-1][0] + len(positioned_ranges[i-1][1].source_text)
-            block_end = positioned_ranges[i+1][0] if i + 1 < len(positioned_ranges) else len(experience_text)
-
-            block_text = experience_text[block_start:block_end].strip()
+            # Adjust block_start to the beginning of the line containing the date
+            # to ensure company/title on the same line are included in the NEXT block
+            # actually, usually company/title are BEFORE the date on the same line.
+            # So the current block should END before the line of the NEXT range.
+            
+            raw_start = r.offset
+            # Look back for the start of the line or a previous date
+            line_start = experience_text.rfind('\n', 0, raw_start) + 1
+            
+            raw_end = positioned_ranges[i+1].offset if i + 1 < len(positioned_ranges) else len(experience_text)
+            # The next block should start at the beginning of its line.
+            # So this block should end at the beginning of the next block's line.
+            next_line_start = experience_text.rfind('\n', 0, raw_end) + 1 if i + 1 < len(positioned_ranges) else len(experience_text)
+            
+            block_text = experience_text[line_start:next_line_start].strip()
 
             # Sanitize URLs to prevent NER misclassification (Problem 3)
             clean_block_text = re.sub(r'https?://\S+|www\.\S+|github\.com/\S+', '', block_text, flags=re.IGNORECASE)
@@ -784,8 +817,18 @@ class CVOrchestrator:
             # Extract specific entities for THIS block using the initialized NER engine
             entities = self._ner.extract_entities(clean_block_text)
 
-            comp = entities.get("orgs", ["Unknown Company"])[0] if entities.get("orgs") else "Unknown Company"
+            # Filter out technologies misclassified as ORGs
+            orgs = _filter_non_orgs(entities.get("orgs", []))
+            
+            comp = orgs[0] if orgs else "Unknown Company"
             loc = entities.get("locations", [None])[0] if entities.get("locations") else None
+            
+            # Fallback: if no company but we have a 'location' that looks like a name (e.g. Sezar)
+            if comp == "Unknown Company" and loc and len(loc.split()) <= 3:
+                # Check if loc is a known tech word
+                if not any(noise in loc.lower() for noise in _NON_ORG_KEYWORDS):
+                    comp = loc
+                    loc = None
             role = entities.get("roles", [predicted_title or "Professional Experience"])[0] if entities.get("roles") else (predicted_title or "Professional Experience")
 
             desc_text = block_text
@@ -812,6 +855,73 @@ class CVOrchestrator:
             )
 
         return items
+
+    def _extract_education(self, text: str) -> List[EducationItem]:
+        """
+        Structured Education Extraction using a combination of NER and Regex.
+        """
+        if not text.strip():
+            return []
+            
+        # Run NER to find institutions and degrees
+        entities = self._ner.extract_entities(text)
+        orgs = _filter_non_orgs(entities.get("orgs", []))
+        degrees = entities.get("education", [])
+        
+        # Fallback for degrees if NER misses them
+        if not degrees:
+            # Match B.Sc. in Computer Science, etc.
+            DEGREE_RE = re.compile(r"\b(B\.?Sc|M\.?Sc|Ph\.?D|Bachelor|Master|Doctorate|BTech|MTech|B\.A|M\.A|MBA)\b(?:\s+in\s+([A-Z][\w\s]{2,40}))?", re.IGNORECASE)
+            matches = DEGREE_RE.findall(text)
+            if matches:
+                # matches is list of (degree, field)
+                degrees = [m[0] for m in matches]
+                fields = [m[1] for m in matches]
+            else:
+                fields = []
+        else:
+            # Fallback for degrees if NER misses them or to get fields of study
+            # Match B.Sc. in Computer Science, etc.
+            DEGREE_RE = re.compile(r"(B\.?Sc|M\.?Sc|Ph\.?D|Bachelor|Master|Doctorate|BTech|MTech|B\.A|M\.A|MBA)[^a-zA-Z]{1,10}(?:in|of)\s+([A-Z][\w\s&]{2,40})", re.IGNORECASE | re.DOTALL)
+            matches = DEGREE_RE.findall(text)
+            
+            fields = ["" for _ in degrees]
+            if matches:
+                # If we found fields via regex, use them
+                # This is more reliable because it matches the whole phrase
+                degrees = [m[0] for m in matches]
+                fields = [m[1] for m in matches]
+        
+        # Regex for GPA
+        gpa_match = re.search(r"\bGPA\s*[:\-]?\s*(\d\.\d{1,2}(?:/\d\.\d)?)", text, re.IGNORECASE)
+        gpa = gpa_match.group(1) if gpa_match else None
+
+        # Extract Dates
+        ranges = self._experience.extract_date_ranges(text)
+        
+        # Build items
+        edu_items = []
+        if orgs:
+            for i, org in enumerate(orgs[:2]): # Support up to 2 items
+                item = EducationItem(
+                    institution=org,
+                    degree=degrees[i] if i < len(degrees) else (degrees[0] if degrees else "Degree"),
+                    field_of_study=fields[i] if i < len(fields) else (fields[0] if fields else None),
+                    start_date=ranges[i].start if i < len(ranges) else None,
+                    end_date=ranges[i].end if i < len(ranges) else None,
+                    gpa=gpa if i == 0 else None # Usually GPA is for the first/highest degree
+                )
+                edu_items.append(item)
+        elif degrees:
+            # Fallback if university name was not picked as ORG
+            edu_items.append(EducationItem(
+                institution="Unknown Institution",
+                degree=degrees[0],
+                field_of_study=fields[0] if fields else None,
+                gpa=gpa
+            ))
+
+        return edu_items
 
     def _extract_block_technologies(
         self,
@@ -843,8 +953,15 @@ class CVOrchestrator:
                 logger.warning("NER for block technologies failed: %s", e)
                 return []
 
-        raw_skills = entities.get("skills", [])
-        if not raw_skills:
+        skills_raw = entities.get("skills", [])
+        
+        # Supplement with deterministic keyword scanner for maximum recall
+        scanned_skills = self._scanner.scan_text(block_text or "")
+        if scanned_skills:
+            logger.info("SkillScanner found %d skills in section.", len(scanned_skills))
+            skills_raw = list(set(skills_raw + scanned_skills))
+
+        if not skills_raw:
             return []
 
         # Filter: skip roles/orgs that NER may have tagged as skills
@@ -853,7 +970,7 @@ class CVOrchestrator:
 
         filtered: List[str] = []
         seen: set = set()
-        for s in raw_skills:
+        for s in skills_raw:
             sl = s.lower()
             if sl in seen or sl in roles_lower or sl in orgs_lower:
                 continue
@@ -965,8 +1082,49 @@ def _aggregate_confidence(values: Sequence[float], *, default: float) -> float:
 # Generic non-skill words that NER often mis-tags
 _SKILL_BLOCKLIST: set = set(load_layer1_config()["skill_config"]["noise_blocklist"])
 
-# Pattern: alphanumeric codes like "Fep2024", "React18", "py3", "v2"
-_ALPHANUMERIC_CODE_RE = re.compile(r'^[A-Za-z]{1,5}\d{2,}$|^\d+[A-Za-z]{1,5}$')
+# Pattern: alphanumeric codes like "Fep2024", "React18", "py3", "v2", "EC2", "S3", "VPC"
+_ALPHANUMERIC_CODE_RE = re.compile(r'^[A-Za-z]{1,5}\d{1,}$|^\d+[A-Za-z]{1,5}$')
+
+_NON_ORG_KEYWORDS = {
+    "aws", "ec2", "s3", "rds", "lambda", "vpc", "iam", "eks", "ecs", "fargate",
+    "docker", "kubernetes", "k8s", "terraform", "terragrunt", "ansible", "jenkins",
+    "github", "gitlab", "bitbucket", "ci/cd", "devops", "linux", "unix", "windows",
+    "nginx", "apache", "postgresql", "mysql", "mongodb", "redis", "elastic", "elastic ip",
+    "prometheus", "grafana", "elk", "certbot", "ssl", "tls", "https", "http", "git",
+    "python", "bash", "shell", "javascript", "node", "mern", "react", "vue", "wsgi",
+    "ssm", "oidc", "iam/irsa", "pvc", "ingress", "nat", "hostinger", "kvm", "openlitespeed",
+    "lswsgi", "csrf", "cookie", "proxy", "header", "vps", "hostinger kvm", "irsa", "iam",
+    "vpc", "s3", "ec2", "rds", "eks", "ecs", "fargate", "mostaql", "upwork", "fiverr", "toptal"
+}
+
+def _filter_non_orgs(orgs: List[str]) -> List[str]:
+    """
+    Remove common technologies and noise that NER often mis-tags as ORG.
+    """
+    filtered = []
+    for o in orgs:
+        ol = o.lower().strip()
+        # Skip if too short or too long
+        if len(ol) < 2 or len(ol) > 60:
+            continue
+        
+        # Split into words to check against noise list
+        words = {w.strip(".,:;()[]") for w in ol.split()}
+        
+        # If any word is a known tech keyword, or the whole thing matches a version code
+        if any(w in _NON_ORG_KEYWORDS for w in words):
+            continue
+            
+        if _ALPHANUMERIC_CODE_RE.match(ol):
+            continue
+            
+        # Specific rejection for things like "RDS PostgreSQL" or "AWS Terraform"
+        tech_substrings = ["postgresql", "aws", "terraform", "docker", "kubernetes", "nginx", "redis", "mongodb", "mysql", "jenkins", "ansible", "python", "bash", "linux"]
+        if any(ts in ol for ts in tech_substrings):
+            continue
+
+        filtered.append(o.strip())
+    return filtered
 
 
 def _filter_noise_skills(skills: List[str], full_name: str = "") -> List[str]:
@@ -1124,6 +1282,9 @@ def _extract_bullets(text: str) -> List[str]:
     lines = [ln.strip() for ln in text.splitlines() if ln.strip()]
     bullets: List[str] = []
     
+    # Phase 3: Noise Pruning for Experience Bullets
+    _BULLET_REJECT_PATTERNS = re.compile(r"live demo|link|page \d+|github\.com|linkedin\.com|http\S+|portfolio", re.IGNORECASE)
+
     for ln in lines:
         # Step 1: Detect and fix "glued" words (always run for experience lines)
         ln = _fix_glued_text(ln)
@@ -1131,7 +1292,11 @@ def _extract_bullets(text: str) -> List[str]:
         # Step 2: Strip bullet markers
         ln_clean = _BULLET_RE.sub("", ln).strip()
         
-        # Step 3: Final polish
+        # Step 3: Noise Rejection
+        if _BULLET_REJECT_PATTERNS.search(ln_clean):
+            continue
+        
+        # Step 4: Final polish
         if len(ln_clean) > 5:
             bullets.append(ln_clean)
             
@@ -1170,18 +1335,21 @@ def _fix_glued_text(text: str) -> str:
     return text.strip()
 
 
-def _merge_best_ranges(ranges) -> List[Any]:
-    # Keep unique ranges by (start,end), prefer longer spans.
+def _merge_best_ranges(ranges: List[DateRange]) -> List[DateRange]:
+    # Keep unique ranges by (start, end, offset).
+    # This prevents merging concurrent roles that have the same dates.
     if not ranges:
         return []
-    uniq: Dict[Tuple[date, date], Any] = {}
+        
+    uniq: Dict[Tuple[date, date, int], DateRange] = {}
     for r in ranges:
-        key = (r.start, r.end)
+        key = (r.start, r.end, r.offset)
         if key not in uniq:
             uniq[key] = r
             continue
         existing = uniq[key]
-        # Same key; keep the one with longer source text as a mild proxy for quality.
-        if len(getattr(r, "source_text", "")) > len(getattr(existing, "source_text", "")):
+        # Same key (exact same position/dates); keep the one with longer source text.
+        if len(r.source_text) > len(existing.source_text):
             uniq[key] = r
-    return sorted(uniq.values(), key=lambda x: (x.start, x.end))
+            
+    return sorted(uniq.values(), key=lambda x: x.offset)

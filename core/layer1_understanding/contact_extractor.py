@@ -47,15 +47,16 @@ _PHONE_RE = re.compile(
     re.VERBOSE,
 )
 
-# LinkedIn — matches full URLs or common short handles like "in/username"
+# LinkedIn — matches full URLs, common short handles like "in/username", or "LinkedIn: username"
+# Added constraints to prevent capturing following text as username
 _LINKEDIN_RE = re.compile(
-    r"(?:(?:https?://)?(?:www\.)?linkedin\.com/in/|in/)([A-Za-z0-9\-_%]+)/?",
+    r"(?:(?:https?://)?(?:www\.)?linkedin\.com/in/|in/|linkedin\s*[:\-]\s*)([A-Za-z0-9\-_%]{3,30})(?:/|[\s,;]|$)",
     re.IGNORECASE,
 )
 
 # GitHub — matches profile URLs (not sub-pages like /repos)
 _GITHUB_RE = re.compile(
-    r"(?:https?://)?(?:www\.)?github\.com/[A-Za-z0-9\-_.]+/?",
+    r"(?:https?://)?(?:www\.)?github\.com/([A-Za-z0-9\-_.]+)(?:/|[\s,;]|$)",
     re.IGNORECASE,
 )
 
@@ -95,6 +96,20 @@ def _clean_location(raw: str) -> Optional[str]:
     cleaned = raw.strip().rstrip(".,;")
     if not (2 <= len(cleaned) <= 60):
         return None
+        
+    # Phase 2: Tech Keyword Rejection for Location
+    # If a location contains words like AWS, Docker, Kubernetes, it's likely a hallucination
+    TECH_NOISE = {
+        "aws", "docker", "kubernetes", "terraform", "linux", "cloud", "engineer", "devops",
+        "science", "computer", "university", "gpa", "honors", "degree", "b.sc", "m.sc",
+        "bash", "python", "scripting", "ansible", "jenkins", "git", "ci/cd",
+        "ec2", "s3", "rds", "vpc", "iam", "eks", "ecs", "fargate", "nginx", "postgresql"
+    }
+    words = {w.lower().strip(".,:;•|()[]") for w in cleaned.split()}
+    tech_substrings = ["aws", "terraform", "postgresql", "docker", "kubernetes", "ec2", "elastic ip", "vpc", "s3", "rds"]
+    if any(noise in words for noise in TECH_NOISE) or any(ts in cleaned.lower() for ts in tech_substrings):
+        return None
+
     # Reject if it reads like a sentence (contains descriptive/action words)
     if _LOCATION_REJECT_WORDS.search(cleaned):
         return None
@@ -165,8 +180,9 @@ def extract_contacts(text: str) -> dict:
             m = re.search(r'([A-Z][\w\s]{1,20}),\s*([A-Z][\w\s]{2,20})\b', ln)
             if m:
                 potential = m.group(0).strip()
-                if not _LOCATION_REJECT_WORDS.search(potential):
-                    location = potential
+                # Use the same cleaning/rejection logic as the primary extractor
+                location = _clean_location(potential)
+                if location:
                     break
 
     # ── Portfolio / Website ──────────────────────────────────────────────────
