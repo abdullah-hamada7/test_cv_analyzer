@@ -1,0 +1,397 @@
+{
+    "cv_parsing": {
+        "parsing_status": "success",
+        "profile": {
+            "full_name": "Yousef ALTohamy Ahmed",
+            "current_title": "Laravel Backend Developer",
+            "headline": "PROFESSIONAL SUMMARY",
+            "contact": {
+                "email": "youseftohtoh46@gmail.com",
+                "phone": "+201069806862",
+                "location": "Giza, Egypt",
+                "linkedin_url": "https://linkedin.com/in/yousefaltohamy",
+                "github_url": "https://github.com/YousefAlTohamy",
+                "portfolio_url": null
+            },
+            "summary": "Yousef ALTohamy Ahmed\nLaravel Backend Developer\nyouseftohtoh46@gmail.com | +201069806862 | Giza, Egypt\nlinkedin.com/in/yousefaltohamy | github.com/YousefAlTohamy\n\nBackend Developer specializing in PHP and Laravel, Final-year Computer Science student\n(Graduating2026)availableforfull-timecommitment. Ibringaproduct-firstmindset,focusing\nonthe”why”todeliversolutionsthatsolverealuserproblems. PassionateaboutCleanCode\nand SOLID principles, I have delivered 15+ scalable web apps and 20+ secure RESTful\nAPIs, backed by practical internship experience at Huma-Volve and intensive training at ITI.",
+            "confidence_score": 0.93
+        },
+        "stats": {
+            "page_count": 2,
+            "char_count": 4114,
+            "word_count": 499,
+            "language_hint": null
+        },
+        "skills": {
+            "items": [
+                {
+                    "confidence_score": 0.65,
+                    "name": "agement",
+                    "category": "hard",
+                    "evidence": "ner"
+                },
+                {
+                    "confidence_score": 0.65,
+                    "name": "Agile Mindset",
+                    "category": "hard",
+                    "evidence": "ner"
+                },
+                {
+                    "confidence_score": 0.65,
+                    "name": "API Development",
+                    "category": "hard",
+                    "evidence": "ner"
+                },
+                {
+                    "confidence_score": 0.65,
+                    "name": "Autho- rization",
+                    "category": "hard",
+                    "evidence": "ner"
+                },
+                {
+                    "confidence_score": 0.65,
+                    "name": "Autho- rization, Migrations",
+                    "category": "hard",
+                    "evidence": "ner"
+                },
+                {
+                    "confidence_score": 0.65,
+                    "name": "Bootstrap • Testing & QA",
+                    "category": "hard",
+                    "evidence": "ner"
+                },
+                {
+                    "confidence_score": 0.65,
+                    "name": "Brevo Mailer",
+                    "category": "hard",
+                    "evidence": "ner"
+                },
+                {
+                    "confidence_score": 0.65,
+                    "name": "chitecture",
+                    "category": "hard",
+                    "evidence": "ner"
+                },
+                {
+                    "confidence_score": 0.65,
+                    "name": "CSS3",
+                    "category": "hard",
+                    "evidence": "ner"
+                },
+                {
+                    "confidence_score": 0.65,
+                    "name": "Database Design (ERD",
+                    "category": "hard",
+                    "evidence": "ner"
+                },
+                {
+                    "confidence_score": 0.65,
+                    "name": "De- sign Patterns",
+                    "category": "hard",
+                    "evidence": "ner"
+                },
+                {
+                    "confidence_score": 0.65,
+                    "name": "Feature & Unit Testing",
+                    "category": "hard",
+                    "evidence": "ner"
+                },
+                {
+                    "confidence_score": 0.65,
+                    "name": "Git",
+                    "category": "hard",
+                    "evidence": "ner"
+                },
+                {
+                    "confidence_score": 0.65,
+                    "name": "GitHub",
+                    "category": "hard",
+                    "evidence": "ner"
+                },
+                {
+                    "confidence_score": 0.65,
+                    "name": "HTML5",
+                    "category": "hard",
+                    "evidence": "ner"
+                },
+                {
+                    "confidence_score": 0.65,
+                    "name": "Huma-Volve",
+                    "category": "hard",
+                    "evidence": "ner"
+                },
+                {
+                    "confidence_score": 0.65,
+                    "name": "JavaScript",
+                    "category": "hard",
+                    "evidence": "ner"
+                },
+                {
+                    "confidence_score": 0.65,
+                    "name": "JSON",
+                    "category": "hard",
+                    "evidence": "ner"
+                },
+                {
+                    "confidence_score": 0.65,
+                    "name": "Lar- avel",
+                    "category": "hard",
+                    "evidence": "ner"
+                },
+                {
+                    "confidence_score": 0.65,
+                    "name": "Laravel",
+                    "category": "hard",
+                    "evidence": "ner"
+                },
+                {
+                    "confidence_score": 0.65,
+                    "name": "Laravel Ecosystem: Eloquent ORM",
+                    "category": "hard",
+                    "evidence": "ner"
+                },
+                {
+                    "confidence_score": 0.65,
+                    "name": "Laravel Framework",
+                    "category": "hard",
+                    "evidence": "ner"
+                },
+                {
+                    "confidence_score": 0.65,
+                    "name": "Laravel Sanctum",
+                    "category": "hard",
+                    "evidence": "ner"
+                },
+                {
+                    "confidence_score": 0.65,
+                    "name": "Migrations",
+                    "category": "hard",
+                    "evidence": "ner"
+                },
+                {
+                    "confidence_score": 0.65,
+                    "name": "MVC Ar- chitecture",
+                    "category": "hard",
+                    "evidence": "ner"
+                },
+                {
+                    "confidence_score": 0.65,
+                    "name": "MySQL",
+                    "category": "hard",
+                    "evidence": "ner"
+                },
+                {
+                    "confidence_score": 0.65,
+                    "name": "OAuth",
+                    "category": "hard",
+                    "evidence": "ner"
+                },
+                {
+                    "confidence_score": 0.65,
+                    "name": "Object-Oriented Programming",
+                    "category": "hard",
+                    "evidence": "ner"
+                },
+                {
+                    "confidence_score": 0.65,
+                    "name": "PHP",
+                    "category": "hard",
+                    "evidence": "ner"
+                },
+                {
+                    "confidence_score": 0.65,
+                    "name": "PHPUnit",
+                    "category": "hard",
+                    "evidence": "ner"
+                },
+                {
+                    "confidence_score": 0.65,
+                    "name": "Policies",
+                    "category": "hard",
+                    "evidence": "ner"
+                },
+                {
+                    "confidence_score": 0.65,
+                    "name": "Postman",
+                    "category": "hard",
+                    "evidence": "ner"
+                },
+                {
+                    "confidence_score": 0.65,
+                    "name": "Queues & Jobs",
+                    "category": "hard",
+                    "evidence": "ner"
+                },
+                {
+                    "confidence_score": 0.65,
+                    "name": "Repository",
+                    "category": "hard",
+                    "evidence": "ner"
+                },
+                {
+                    "confidence_score": 0.65,
+                    "name": "RESTful APIs",
+                    "category": "hard",
+                    "evidence": "ner"
+                },
+                {
+                    "confidence_score": 0.65,
+                    "name": "Safarni",
+                    "category": "hard",
+                    "evidence": "ner"
+                },
+                {
+                    "confidence_score": 0.65,
+                    "name": "Seeders",
+                    "category": "hard",
+                    "evidence": "ner"
+                },
+                {
+                    "confidence_score": 0.65,
+                    "name": "Service Patterns",
+                    "category": "hard",
+                    "evidence": "ner"
+                },
+                {
+                    "confidence_score": 0.65,
+                    "name": "SoftwareEngineering",
+                    "category": "hard",
+                    "evidence": "ner"
+                },
+                {
+                    "confidence_score": 0.65,
+                    "name": "SOLID",
+                    "category": "hard",
+                    "evidence": "ner"
+                },
+                {
+                    "confidence_score": 0.65,
+                    "name": "SOLID Principles",
+                    "category": "hard",
+                    "evidence": "ner"
+                },
+                {
+                    "confidence_score": 0.65,
+                    "name": "SQL",
+                    "category": "hard",
+                    "evidence": "ner"
+                },
+                {
+                    "confidence_score": 0.65,
+                    "name": "Stripe Payment Gateway",
+                    "category": "hard",
+                    "evidence": "ner"
+                },
+                {
+                    "confidence_score": 0.65,
+                    "name": "TDD",
+                    "category": "hard",
+                    "evidence": "ner"
+                }
+            ],
+            "confidence_score": 0.65
+        },
+        "experience": {
+            "items": [
+                {
+                    "confidence_score": 0.45,
+                    "title": "Backend Developer",
+                    "company": "Unknown Company",
+                    "location": null,
+                    "start_date": null,
+                    "end_date": null,
+                    "is_current": null,
+                    "description": [
+                        "Collaborated within a cross-functional team to develop and maintain two large-scale Lar-",
+                        "Architectedanddelivered20+secureRESTAPIsforthe”Safarni”bookingplatform,adding",
+                        "IntegratedStripeAPI,processing100+simulatedtransactionswithzerobreaches,demon-",
+                        "Managedbackendlogicfordoctoravailability,processingover500+mockrecordstoensure"
+                    ],
+                    "technologies": [
+                        "IntegratedStripeAPI",
+                        "Lar- avel",
+                        "Laravel",
+                        "MySQL",
+                        "Safarni"
+                    ]
+                }
+            ],
+            "confidence_score": 0.45
+        },
+        "analysis": {
+            "summary": null,
+            "predicted_role": "Laravel Backend Developer",
+            "seniority": "intern",
+            "primary_domain": "Full Stack Development",
+            "strengths": [],
+            "gaps": [],
+            "red_flags": [],
+            "confidence_score": 0.55,
+            "metadata": {
+                "segmentation": {
+                    "found_sections": [
+                        "certificates",
+                        "education",
+                        "experience",
+                        "languages",
+                        "profile_summary",
+                        "projects",
+                        "skills"
+                    ],
+                    "sections_missing": [],
+                    "anomalies": []
+                },
+                "experience": {
+                    "total_experience_years": 0.0,
+                    "skill_durations": {},
+                    "top_skills_by_years": [],
+                    "action_verb_score": 0.0,
+                    "gap_details": []
+                },
+                "extraction": {
+                    "source": "spatial",
+                    "spatial_status": "ok",
+                    "word_count_spatial": 499,
+                    "raw_text": "Yousef ALTohamy Ahmed\nLaravel Backend Developer\nyouseftohtoh46@gmail.com | +201069806862 | Giza, Egypt\nlinkedin.com/in/yousefaltohamy | github.com/YousefAlTohamy\nPROFESSIONAL SUMMARY\nBackend Developer specializing in PHP and Laravel, Final-year Computer Science student\n(Graduating2026)availableforfull-timecommitment. Ibringaproduct-firstmindset,focusing\nonthe”why”todeliversolutionsthatsolverealuserproblems. PassionateaboutCleanCode\nand SOLID principles, I have delivered 15+ scalable web apps and 20+ secure RESTful\nAPIs, backed by practical internship experience at Huma-Volve and intensive training at ITI.\nWORK EXPERIENCE\nLaravel Backend Developer\nHuma-Volve\n• Collaborated within a cross-functional team to develop and maintain two large-scale Lar-\navel/MySQL applications (Safarni & Medical Management System).\n• Architectedanddelivered20+secureRESTAPIsforthe”Safarni”bookingplatform,adding\ncomplex filtering that boosted data retrieval speed by 30%.\n• IntegratedStripeAPI,processing100+simulatedtransactionswithzerobreaches,demon-\nstrating secure payment handling.\n• Managedbackendlogicfordoctoravailability,processingover500+mockrecordstoensure\nsystem stability before launch.\nPROJECTS\nCareer Compass (Graduation Project)\nBackend Developer | Laravel, MySQL, AI Integration\n• Collaborating on the backend development of an AI-driven platform aimed at enhancing\nstudent career readiness and guidance.\n• Structuring complex database relationships and developing robust API endpoints to pro-\ncess user assessments and handle AI recommendation data efficiently.\nHuma-Volve Medical Platform (Internship Project)\nBackend Developer | Laravel, MySQL, Stripe, PHPUnit\n• Engineered a secure Stripe Payment system for seamless bookings and Saved Cards\nlogic.\n• Developed 15+ RESTful endpoints and built Admin/Doctor dashboards using Laravel\nBlade.\n• Applied Repository & Service Patterns and achieved high stability via PHPUnit testing.\nSafarni (Travel Booking System) (Internship Project)\nBackend Developer | Laravel, MySQL, Sanctum, OAuth\n• Built a secure Auth System (OTP, Password Resets, Google OAuth) using Laravel Sanc-\ntum.\n• Achieved 92% code coverage via TDD utilizing PHPUnit to eliminate system bugs before\ndeployment.\n\n12/2025 – 01/2026\nRemote\n01/2026 – Present\n12/2025 – 01/2026\n12/2025 – 01/2026\n\n• Designed complex database schemas and populated 500+ records using Migrations &\nSeeders.\nIdeas (Social Media Platform)\nBackend Developer | Laravel, MySQL, Brevo Mailer\n• Developed a robust system for User Following, Likes, and threaded Comments utilizing\ncomplex Eloquent ORM relationships.\n• Optimized application performance by implementing Laravel Queues & Jobs, which re-\nduced API response time by 40% during high-traffic simulations.\n• Utilized Laravel Policies to enforce granular authorization rules, and built a dedicated Ad-\nmin Dashboard for content moderation and user management.\nSKILLS\n• Core & Frameworks: PHP, Object-Oriented Programming, Laravel Framework, MVC Ar-\nchitecture, API Development, MySQL, SQL\n• Concepts & Architecture: Database Design (ERD), Repository & Service Patterns, De-\nsign Patterns, SOLID Principles\n• Laravel Ecosystem: Eloquent ORM, Queues & Jobs, Laravel Sanctum, Policies & Autho-\nrization, Migrations & Seeders\n• Tools & Integrations: Git, GitHub, Stripe Payment Gateway, OAuth, JSON, Brevo Mailer\n(SMTP)\n• Web Fundamentals: HTML5, CSS3, JavaScript, Bootstrap\n• Testing & QA: PHPUnit, TDD, Feature & Unit Testing, Postman\n• Soft Skills: Problem Solving, Effective Communication, Team Collaboration, Time Man-\nagement, Adaptability, Agile Mindset\nEDUCATION\nKafr El Sheikh University\nPursuing B.Sc. in Computer Science\n• Grade: Very Good.\n• KeyCoursework: SoftwareEngineering,DataStructures&Algorithms,DatabaseSystems,\nArtificial Intelligence.\nCERTIFICATES\n• FullStackWebDevelopmentTraining(PHP&Laravel)|InformationTechnologyInstitute\n(ITI)\n• Back-end Training Program | Huma-Volve\nSuccessfully completed an intensive 176-hour back-end training program.\nLANGUAGES\n• Arabic: Native/Bilingual\n• English: Proficient\n\n10/2025 – 11/2025\n2022 – 2026\n08/2025\n01/2026"
+                },
+                "domain_classification": {
+                    "primary": "Full Stack Development",
+                    "all_scores": {
+                        "Backend Development": 0.549531102180481,
+                        "Frontend Development": 0.47296324372291565,
+                        "Full Stack Development": 0.5649306178092957,
+                        "Mobile App Development": 0.36208784580230713,
+                        "DevOps & Cloud": 0.4260680377483368,
+                        "UI/UX Design": 0.4265699088573456,
+                        "Quality Assurance & Testing": 0.45776352286338806,
+                        "Cybersecurity": 0.3283109962940216
+                    }
+                }
+            }
+        }
+    },
+    "matching_result": {
+        "match_score": 29.98,
+        "breakdown": {
+            "contextual_similarity": 26.77,
+            "structured_skills_similarity": 36.59,
+            "domain_alignment": 0.0
+        },
+        "weights_used": {
+            "semantic": 0.3,
+            "skills_structured": 0.6,
+            "domain": 0.1
+        },
+        "missing_skills": [
+            "Flutter",
+            "Dart",
+            "Firebase",
+            "Bloc",
+            "Clean Architecture"
+        ],
+        "detected_domains": {
+            "cv": "Full Stack Development",
+            "job": "Technology & Software"
+        }
+    }
+}

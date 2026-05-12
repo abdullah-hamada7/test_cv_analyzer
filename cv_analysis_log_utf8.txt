@@ -1,0 +1,452 @@
+﻿.\venv\Scripts\python.exe : Using CPU. Note: This module is much faster with a GPU.
+At line:1 char:20
++ ... v-analyzer; .\venv\Scripts\python.exe main.py "tests\Flutter Develope ...
++                 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+    + CategoryInfo          : NotSpecified: (Using CPU. Note...ter with a GPU.:String) [], RemoteException
+    + FullyQualifiedErrorId : NativeCommandError
+ 
+2026-05-09 07:24:00,034 [INFO] careercompass.main: process_file() called for: tests\Flutter Developer_CV_Ahmed_Khames .pdf.pdf
+2026-05-09 07:24:00,052 [INFO] careercompass.main: File size: 138.1 KB
+2026-05-09 07:24:00,053 [INFO] core.layer3_matching.embedder: Loading Embedder Model 'all-MiniLM-L6-v2' ...
+2026-05-09 07:24:00,056 [INFO] sentence_transformers.base.model: No device provided, using cpu
+2026-05-09 07:24:00,821 [INFO] httpx: HTTP Request: HEAD https://huggingface.co/sentence-transformers/all-MiniLM-L6-v2/resolve/main/modules.json "HTTP/1.1 307 Temporary Redirect"
+2026-05-09 07:24:00,874 [INFO] httpx: HTTP Request: HEAD https://huggingface.co/api/resolve-cache/models/sentence-transformers/all-MiniLM-L6-v2/c9745ed1d9f207416be6d2e6f8de32d1f16199bf/modules.json "HTTP/1.1 200 OK"
+2026-05-09 07:24:01,034 [INFO] httpx: HTTP Request: HEAD https://huggingface.co/sentence-transformers/all-MiniLM-L6-v2/resolve/main/config_sentence_transformers.json "HTTP/1.1 307 Temporary Redirect"
+Warning: You are sending unauthenticated requests to the HF Hub. Please set a HF_TOKEN to enable higher rate limits 
+and faster downloads.
+2026-05-09 07:24:01,037 [WARNING] huggingface_hub.utils._http: Warning: You are sending unauthenticated requests to the HF Hub. Please set a HF_TOKEN to enable higher rate limits and faster downloads.
+2026-05-09 07:24:01,091 [INFO] httpx: HTTP Request: HEAD https://huggingface.co/api/resolve-cache/models/sentence-transformers/all-MiniLM-L6-v2/c9745ed1d9f207416be6d2e6f8de32d1f16199bf/config_sentence_transformers.json "HTTP/1.1 200 OK"
+2026-05-09 07:24:01,095 [INFO] sentence_transformers.base.model: Loading SentenceTransformer model from sentence-transformers/all-MiniLM-L6-v2.
+2026-05-09 07:24:01,246 [INFO] httpx: HTTP Request: HEAD https://huggingface.co/sentence-transformers/all-MiniLM-L6-v2/resolve/main/config_sentence_transformers.json "HTTP/1.1 307 Temporary Redirect"
+2026-05-09 07:24:01,292 [INFO] httpx: HTTP Request: HEAD https://huggingface.co/api/resolve-cache/models/sentence-transformers/all-MiniLM-L6-v2/c9745ed1d9f207416be6d2e6f8de32d1f16199bf/config_sentence_transformers.json "HTTP/1.1 200 OK"
+2026-05-09 07:24:01,445 [INFO] httpx: HTTP Request: HEAD https://huggingface.co/sentence-transformers/all-MiniLM-L6-v2/resolve/main/README.md "HTTP/1.1 307 Temporary Redirect"
+2026-05-09 07:24:01,497 [INFO] httpx: HTTP Request: HEAD https://huggingface.co/api/resolve-cache/models/sentence-transformers/all-MiniLM-L6-v2/c9745ed1d9f207416be6d2e6f8de32d1f16199bf/README.md "HTTP/1.1 200 OK"
+2026-05-09 07:24:01,658 [INFO] httpx: HTTP Request: HEAD https://huggingface.co/sentence-transformers/all-MiniLM-L6-v2/resolve/main/modules.json "HTTP/1.1 307 Temporary Redirect"
+2026-05-09 07:24:01,718 [INFO] httpx: HTTP Request: HEAD https://huggingface.co/api/resolve-cache/models/sentence-transformers/all-MiniLM-L6-v2/c9745ed1d9f207416be6d2e6f8de32d1f16199bf/modules.json "HTTP/1.1 200 OK"
+2026-05-09 07:24:01,879 [INFO] httpx: HTTP Request: HEAD https://huggingface.co/sentence-transformers/all-MiniLM-L6-v2/resolve/main/sentence_bert_config.json "HTTP/1.1 307 Temporary Redirect"
+2026-05-09 07:24:01,934 [INFO] httpx: HTTP Request: HEAD https://huggingface.co/api/resolve-cache/models/sentence-transformers/all-MiniLM-L6-v2/c9745ed1d9f207416be6d2e6f8de32d1f16199bf/sentence_bert_config.json "HTTP/1.1 200 OK"
+2026-05-09 07:24:02,113 [INFO] httpx: HTTP Request: HEAD https://huggingface.co/sentence-transformers/all-MiniLM-L6-v2/resolve/main/adapter_config.json "HTTP/1.1 404 Not Found"
+2026-05-09 07:24:02,281 [INFO] httpx: HTTP Request: HEAD https://huggingface.co/sentence-transformers/all-MiniLM-L6-v2/resolve/main/config.json "HTTP/1.1 307 Temporary Redirect"
+2026-05-09 07:24:02,331 [INFO] httpx: HTTP Request: HEAD https://huggingface.co/api/resolve-cache/models/sentence-transformers/all-MiniLM-L6-v2/c9745ed1d9f207416be6d2e6f8de32d1f16199bf/config.json "HTTP/1.1 200 OK"
+
+Loading weights:   0%|          | 0/103 [00:00<?, ?it/s]
+Loading weights: 100%|##########| 103/103 [00:00<00:00, 2683.83it/s]
+2026-05-09 07:24:02,664 [INFO] httpx: HTTP Request: HEAD https://huggingface.co/sentence-transformers/all-MiniLM-L6-v2/resolve/main/processor_config.json "HTTP/1.1 404 Not Found"
+2026-05-09 07:24:02,832 [INFO] httpx: HTTP Request: HEAD https://huggingface.co/sentence-transformers/all-MiniLM-L6-v2/resolve/main/preprocessor_config.json "HTTP/1.1 404 Not Found"
+2026-05-09 07:24:02,994 [INFO] httpx: HTTP Request: HEAD https://huggingface.co/sentence-transformers/all-MiniLM-L6-v2/resolve/main/video_preprocessor_config.json "HTTP/1.1 404 Not Found"
+2026-05-09 07:24:03,154 [INFO] httpx: HTTP Request: HEAD https://huggingface.co/sentence-transformers/all-MiniLM-L6-v2/resolve/main/preprocessor_config.json "HTTP/1.1 404 Not Found"
+2026-05-09 07:24:03,316 [INFO] httpx: HTTP Request: HEAD https://huggingface.co/sentence-transformers/all-MiniLM-L6-v2/resolve/main/tokenizer_config.json "HTTP/1.1 307 Temporary Redirect"
+2026-05-09 07:24:03,368 [INFO] httpx: HTTP Request: HEAD https://huggingface.co/api/resolve-cache/models/sentence-transformers/all-MiniLM-L6-v2/c9745ed1d9f207416be6d2e6f8de32d1f16199bf/tokenizer_config.json "HTTP/1.1 200 OK"
+2026-05-09 07:24:03,523 [INFO] httpx: HTTP Request: HEAD https://huggingface.co/sentence-transformers/all-MiniLM-L6-v2/resolve/main/config.json "HTTP/1.1 307 Temporary Redirect"
+2026-05-09 07:24:03,571 [INFO] httpx: HTTP Request: HEAD https://huggingface.co/api/resolve-cache/models/sentence-transformers/all-MiniLM-L6-v2/c9745ed1d9f207416be6d2e6f8de32d1f16199bf/config.json "HTTP/1.1 200 OK"
+2026-05-09 07:24:03,730 [INFO] httpx: HTTP Request: HEAD https://huggingface.co/sentence-transformers/all-MiniLM-L6-v2/resolve/main/config.json "HTTP/1.1 307 Temporary Redirect"
+2026-05-09 07:24:03,781 [INFO] httpx: HTTP Request: HEAD https://huggingface.co/api/resolve-cache/models/sentence-transformers/all-MiniLM-L6-v2/c9745ed1d9f207416be6d2e6f8de32d1f16199bf/config.json "HTTP/1.1 200 OK"
+2026-05-09 07:24:03,944 [INFO] httpx: HTTP Request: HEAD https://huggingface.co/sentence-transformers/all-MiniLM-L6-v2/resolve/main/tokenizer_config.json "HTTP/1.1 307 Temporary Redirect"
+2026-05-09 07:24:03,992 [INFO] httpx: HTTP Request: HEAD https://huggingface.co/api/resolve-cache/models/sentence-transformers/all-MiniLM-L6-v2/c9745ed1d9f207416be6d2e6f8de32d1f16199bf/tokenizer_config.json "HTTP/1.1 200 OK"
+2026-05-09 07:24:04,157 [INFO] httpx: HTTP Request: GET https://huggingface.co/api/models/sentence-transformers/all-MiniLM-L6-v2/tree/main/additional_chat_templates?recursive=false&expand=false "HTTP/1.1 404 Not Found"
+2026-05-09 07:24:04,316 [INFO] httpx: HTTP Request: GET https://huggingface.co/api/models/sentence-transformers/all-MiniLM-L6-v2/tree/main?recursive=true&expand=false "HTTP/1.1 200 OK"
+2026-05-09 07:24:04,583 [INFO] httpx: HTTP Request: HEAD https://huggingface.co/sentence-transformers/all-MiniLM-L6-v2/resolve/main/1_Pooling/config.json "HTTP/1.1 307 Temporary Redirect"
+2026-05-09 07:24:04,635 [INFO] httpx: HTTP Request: HEAD https://huggingface.co/api/resolve-cache/models/sentence-transformers/all-MiniLM-L6-v2/c9745ed1d9f207416be6d2e6f8de32d1f16199bf/1_Pooling%2Fconfig.json "HTTP/1.1 200 OK"
+2026-05-09 07:24:04,792 [INFO] httpx: HTTP Request: GET https://huggingface.co/api/models/sentence-transformers/all-MiniLM-L6-v2 "HTTP/1.1 200 OK"
+2026-05-09 07:24:04,797 [INFO] core.layer3_matching.embedder: Embedder Model 'all-MiniLM-L6-v2' loaded successfully.
+2026-05-09 07:24:04,797 [INFO] core.layer1_understanding.orchestrator: Shared SemanticEmbedder initialized for orchestrator.
+
+Batches:   0%|          | 0/1 [00:00<?, ?it/s]
+Batches: 100%|##########| 1/1 [00:00<00:00, 27.71it/s]
+
+Batches:   0%|          | 0/1 [00:00<?, ?it/s]
+Batches: 100%|##########| 1/1 [00:00<00:00, 90.73it/s]
+
+Batches:   0%|          | 0/1 [00:00<?, ?it/s]
+Batches: 100%|##########| 1/1 [00:00<00:00, 93.72it/s]
+
+Batches:   0%|          | 0/1 [00:00<?, ?it/s]
+Batches: 100%|##########| 1/1 [00:00<00:00, 118.29it/s]
+
+Batches:   0%|          | 0/1 [00:00<?, ?it/s]
+Batches: 100%|##########| 1/1 [00:00<00:00, 142.89it/s]
+
+Batches:   0%|          | 0/1 [00:00<?, ?it/s]
+Batches: 100%|##########| 1/1 [00:00<00:00, 124.96it/s]
+
+Batches:   0%|          | 0/1 [00:00<?, ?it/s]
+Batches: 100%|##########| 1/1 [00:00<00:00, 109.65it/s]
+
+Batches:   0%|          | 0/1 [00:00<?, ?it/s]
+Batches: 100%|##########| 1/1 [00:00<00:00, 111.11it/s]
+
+Batches:   0%|          | 0/1 [00:00<?, ?it/s]
+Batches: 100%|##########| 1/1 [00:00<00:00, 124.98it/s]
+
+Batches:   0%|          | 0/1 [00:00<?, ?it/s]
+Batches: 100%|##########| 1/1 [00:00<00:00, 83.31it/s]
+
+Batches:   0%|          | 0/1 [00:00<?, ?it/s]
+Batches: 100%|##########| 1/1 [00:00<00:00, 90.90it/s]
+
+Batches:   0%|          | 0/1 [00:00<?, ?it/s]
+Batches: 100%|##########| 1/1 [00:00<00:00, 94.24it/s]
+
+Batches:   0%|          | 0/1 [00:00<?, ?it/s]
+Batches: 100%|##########| 1/1 [00:00<00:00, 89.54it/s]
+
+Batches:   0%|          | 0/1 [00:00<?, ?it/s]
+Batches: 100%|##########| 1/1 [00:00<00:00, 90.62it/s]
+
+Batches:   0%|          | 0/1 [00:00<?, ?it/s]
+Batches: 100%|##########| 1/1 [00:00<00:00, 86.78it/s]
+
+Batches:   0%|          | 0/1 [00:00<?, ?it/s]
+Batches: 100%|##########| 1/1 [00:00<00:00, 109.53it/s]
+
+Batches:   0%|          | 0/1 [00:00<?, ?it/s]
+Batches: 100%|##########| 1/1 [00:00<00:00, 109.68it/s]
+
+Batches:   0%|          | 0/1 [00:00<?, ?it/s]
+Batches: 100%|##########| 1/1 [00:00<00:00, 85.35it/s]
+
+Batches:   0%|          | 0/1 [00:00<?, ?it/s]
+Batches: 100%|##########| 1/1 [00:00<00:00, 90.90it/s]
+
+Batches:   0%|          | 0/1 [00:00<?, ?it/s]
+Batches: 100%|##########| 1/1 [00:00<00:00, 83.35it/s]
+
+Batches:   0%|          | 0/1 [00:00<?, ?it/s]
+Batches: 100%|##########| 1/1 [00:00<00:00, 81.06it/s]
+
+Batches:   0%|          | 0/1 [00:00<?, ?it/s]
+Batches: 100%|##########| 1/1 [00:00<00:00, 99.97it/s]
+
+Batches:   0%|          | 0/1 [00:00<?, ?it/s]
+Batches: 100%|##########| 1/1 [00:00<00:00, 117.40it/s]
+
+Batches:   0%|          | 0/1 [00:00<?, ?it/s]
+Batches: 100%|##########| 1/1 [00:00<00:00, 124.33it/s]
+
+Batches:   0%|          | 0/1 [00:00<?, ?it/s]
+Batches: 100%|##########| 1/1 [00:00<00:00, 99.88it/s]
+
+Batches:   0%|          | 0/1 [00:00<?, ?it/s]
+Batches: 100%|##########| 1/1 [00:00<00:00, 99.97it/s]
+
+Batches:   0%|          | 0/1 [00:00<?, ?it/s]
+Batches: 100%|##########| 1/1 [00:00<00:00, 98.16it/s]
+
+Batches:   0%|          | 0/1 [00:00<?, ?it/s]
+Batches: 100%|##########| 1/1 [00:00<00:00, 111.09it/s]
+
+Batches:   0%|          | 0/1 [00:00<?, ?it/s]
+Batches: 100%|##########| 1/1 [00:00<00:00, 105.08it/s]
+
+Batches:   0%|          | 0/1 [00:00<?, ?it/s]
+Batches: 100%|##########| 1/1 [00:00<00:00, 111.08it/s]
+
+Batches:   0%|          | 0/1 [00:00<?, ?it/s]
+Batches: 100%|##########| 1/1 [00:00<00:00, 105.08it/s]
+
+Batches:   0%|          | 0/1 [00:00<?, ?it/s]
+Batches: 100%|##########| 1/1 [00:00<00:00, 110.71it/s]
+
+Batches:   0%|          | 0/1 [00:00<?, ?it/s]
+Batches: 100%|##########| 1/1 [00:00<00:00, 105.14it/s]
+
+Batches:   0%|          | 0/1 [00:00<?, ?it/s]
+Batches: 100%|##########| 1/1 [00:00<00:00, 111.09it/s]
+
+Batches:   0%|          | 0/1 [00:00<?, ?it/s]
+Batches: 100%|##########| 1/1 [00:00<00:00, 110.64it/s]
+
+Batches:   0%|          | 0/1 [00:00<?, ?it/s]
+Batches: 100%|##########| 1/1 [00:00<00:00, 108.84it/s]
+
+Batches:   0%|          | 0/1 [00:00<?, ?it/s]
+Batches: 100%|##########| 1/1 [00:00<00:00, 103.04it/s]
+
+Batches:   0%|          | 0/1 [00:00<?, ?it/s]
+Batches: 100%|##########| 1/1 [00:00<00:00, 132.93it/s]
+
+Batches:   0%|          | 0/1 [00:00<?, ?it/s]
+Batches: 100%|##########| 1/1 [00:00<00:00, 124.97it/s]
+
+Batches:   0%|          | 0/1 [00:00<?, ?it/s]
+Batches: 100%|##########| 1/1 [00:00<00:00, 104.48it/s]
+
+Batches:   0%|          | 0/1 [00:00<?, ?it/s]
+Batches: 100%|##########| 1/1 [00:00<00:00, 115.95it/s]
+
+Batches:   0%|          | 0/1 [00:00<?, ?it/s]
+Batches: 100%|##########| 1/1 [00:00<00:00, 132.90it/s]
+2026-05-09 07:24:05,376 [INFO] core.layer1_understanding.section_segmenter: Semantic header references pre-computed for 7 section types.
+2026-05-09 07:24:05,377 [INFO] core.layer1_understanding.advanced_ner: NER pipeline will use CPU.
+
+Loading weights:   0%|          | 0/199 [00:00<?, ?it/s]
+Loading weights: 100%|##########| 199/199 [00:00<00:00, 2394.11it/s]
+2026-05-09 07:24:05,668 [INFO] core.layer1_understanding.advanced_ner: AdvancedNEREngine loaded NER model: E:\flutter_projects\Graduation-project\ai-cv-analyzer\models\ner_weights\career_compass_ner_final (device=-1)
+
+Batches:   0%|          | 0/1 [00:00<?, ?it/s]
+Batches: 100%|##########| 1/1 [00:00<00:00, 86.82it/s]
+
+Batches:   0%|          | 0/1 [00:00<?, ?it/s]
+Batches: 100%|##########| 1/1 [00:00<00:00, 86.80it/s]
+
+Batches:   0%|          | 0/1 [00:00<?, ?it/s]
+Batches: 100%|##########| 1/1 [00:00<00:00, 71.19it/s]
+
+Batches:   0%|          | 0/1 [00:00<?, ?it/s]
+Batches: 100%|##########| 1/1 [00:00<00:00, 83.34it/s]
+
+Batches:   0%|          | 0/1 [00:00<?, ?it/s]
+Batches: 100%|##########| 1/1 [00:00<00:00, 79.92it/s]
+
+Batches:   0%|          | 0/1 [00:00<?, ?it/s]
+Batches: 100%|##########| 1/1 [00:00<00:00, 79.85it/s]
+
+Batches:   0%|          | 0/1 [00:00<?, ?it/s]
+Batches: 100%|##########| 1/1 [00:00<00:00, 83.33it/s]
+
+Batches:   0%|          | 0/1 [00:00<?, ?it/s]
+Batches: 100%|##########| 1/1 [00:00<00:00, 74.02it/s]
+
+Batches:   0%|          | 0/1 [00:00<?, ?it/s]
+Batches: 100%|##########| 1/1 [00:00<00:00, 89.82it/s]
+
+Batches:   0%|          | 0/1 [00:00<?, ?it/s]
+Batches: 100%|##########| 1/1 [00:00<00:00, 79.92it/s]
+
+Batches:   0%|          | 0/1 [00:00<?, ?it/s]
+Batches: 100%|##########| 1/1 [00:00<00:00, 79.72it/s]
+
+Batches:   0%|          | 0/1 [00:00<?, ?it/s]
+Batches: 100%|##########| 1/1 [00:00<00:00, 91.01it/s]
+
+Batches:   0%|          | 0/1 [00:00<?, ?it/s]
+Batches: 100%|##########| 1/1 [00:00<00:00, 58.28it/s]
+
+Batches:   0%|          | 0/1 [00:00<?, ?it/s]
+Batches: 100%|##########| 1/1 [00:00<00:00, 79.94it/s]
+
+Batches:   0%|          | 0/1 [00:00<?, ?it/s]
+Batches: 100%|##########| 1/1 [00:00<00:00, 86.83it/s]
+
+Batches:   0%|          | 0/1 [00:00<?, ?it/s]
+Batches: 100%|##########| 1/1 [00:00<00:00, 71.42it/s]
+
+Batches:   0%|          | 0/1 [00:00<?, ?it/s]
+Batches: 100%|##########| 1/1 [00:00<00:00, 79.87it/s]
+
+Batches:   0%|          | 0/1 [00:00<?, ?it/s]
+Batches: 100%|##########| 1/1 [00:00<00:00, 76.92it/s]
+
+Batches:   0%|          | 0/1 [00:00<?, ?it/s]
+Batches: 100%|##########| 1/1 [00:00<00:00, 86.84it/s]
+
+Batches:   0%|          | 0/1 [00:00<?, ?it/s]
+Batches: 100%|##########| 1/1 [00:00<00:00, 90.90it/s]
+
+Batches:   0%|          | 0/1 [00:00<?, ?it/s]
+Batches: 100%|##########| 1/1 [00:00<00:00, 82.32it/s]
+2026-05-09 07:24:06,001 [INFO] core.layer2_classification.classifier: Loading Layer 2 Classifier Fallback (DistilBART)...
+2026-05-09 07:24:06,992 [INFO] httpx: HTTP Request: HEAD https://huggingface.co/valhalla/distilbart-mnli-12-1/resolve/main/config.json "HTTP/1.1 307 Temporary Redirect"
+2026-05-09 07:24:08,034 [INFO] httpx: HTTP Request: HEAD https://huggingface.co/api/resolve-cache/models/valhalla/distilbart-mnli-12-1/506336d4214470e3b3b36021358daae28e25ceac/config.json "HTTP/1.1 200 OK"
+2026-05-09 07:24:09,499 [INFO] httpx: HTTP Request: HEAD https://huggingface.co/valhalla/distilbart-mnli-12-1/resolve/main/model.safetensors "HTTP/1.1 404 Not Found"
+
+Loading weights:   0%|          | 0/231 [00:00<?, ?it/s]
+Loading weights: 100%|##########| 231/231 [00:00<00:00, 6683.53it/s]
+2026-05-09 07:24:09,775 [INFO] httpx: HTTP Request: GET https://huggingface.co/api/models/valhalla/distilbart-mnli-12-1 "HTTP/1.1 200 OK"
+2026-05-09 07:24:09,959 [INFO] httpx: HTTP Request: GET https://huggingface.co/api/models/valhalla/distilbart-mnli-12-1/commits/main "HTTP/1.1 200 OK"
+2026-05-09 07:24:10,123 [INFO] httpx: HTTP Request: GET https://huggingface.co/api/models/valhalla/distilbart-mnli-12-1/discussions?p=0 "HTTP/1.1 200 OK"
+2026-05-09 07:24:10,215 [INFO] httpx: HTTP Request: GET https://huggingface.co/api/models/valhalla/distilbart-mnli-12-1/tree/main/additional_chat_templates?recursive=false&expand=false "HTTP/1.1 404 Not Found"
+2026-05-09 07:24:10,300 [INFO] httpx: HTTP Request: GET https://huggingface.co/api/models/valhalla/distilbart-mnli-12-1/commits/refs%2Fpr%2F4 "HTTP/1.1 200 OK"
+2026-05-09 07:24:10,390 [INFO] httpx: HTTP Request: GET https://huggingface.co/api/models/valhalla/distilbart-mnli-12-1/tree/main?recursive=true&expand=false "HTTP/1.1 200 OK"
+2026-05-09 07:24:10,520 [INFO] httpx: HTTP Request: HEAD https://huggingface.co/valhalla/distilbart-mnli-12-1/resolve/refs%2Fpr%2F4/model.safetensors.index.json "HTTP/1.1 404 Not Found"
+2026-05-09 07:24:10,521 [INFO] core.layer1_understanding.orchestrator: Layer 2 Domain Classifier (Singleton) initialized for orchestrator.
+2026-05-09 07:24:10,522 [INFO] core.layer1_understanding.orchestrator: V2 orchestrator processing file: Flutter Developer_CV_Ahmed_Khames .pdf.pdf
+2026-05-09 07:24:10,722 [INFO] httpx: HTTP Request: HEAD https://huggingface.co/valhalla/distilbart-mnli-12-1/resolve/refs%2Fpr%2F4/model.safetensors "HTTP/1.1 302 Found"
+--- Logging error ---
+Traceback (most recent call last):
+  File "E:\Python311\Lib\logging\__init__.py", line 1113, in emit
+    stream.write(msg + self.terminator)
+  File "E:\Python311\Lib\encodings\cp1252.py", line 19, in encode
+    return codecs.charmap_encode(input,self.errors,encoding_table)[0]
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+UnicodeEncodeError: 'charmap' codec can't encode character '\u23f1' in position 71: character maps to <undefined>
+Call stack:
+  File "E:\Python311\Lib\threading.py", line 1002, in _bootstrap
+    self._bootstrap_inner()
+  File "E:\Python311\Lib\threading.py", line 1045, in _bootstrap_inner
+    self.run()
+  File "E:\Python311\Lib\threading.py", line 982, in run
+    self._target(*self._args, **self._kwargs)
+  File "E:\Python311\Lib\concurrent\futures\thread.py", line 83, in _worker
+    work_item.run()
+  File "E:\Python311\Lib\concurrent\futures\thread.py", line 58, in run
+    result = self.fn(*self.args, **self.kwargs)
+  File "E:\flutter_projects\Graduation-project\ai-cv-analyzer\core\layer1_understanding\orchestrator.py", line 148, in 
+process_cv
+    result = self._process_cv_unlocked(pdf_bytes, filename)
+  File "E:\flutter_projects\Graduation-project\ai-cv-analyzer\core\layer1_understanding\orchestrator.py", line 169, in 
+_process_cv_unlocked
+    logger.info("\u23f1 Spatial Parsing: %.1fms", spatial_ms)
+Message: '\u23f1 Spatial Parsing: %.1fms'
+Arguments: (488.3598000742495,)
+
+Batches:   0%|          | 0/1 [00:00<?, ?it/s]
+Batches: 100%|##########| 1/1 [00:00<00:00, 62.52it/s]
+
+Batches:   0%|          | 0/1 [00:00<?, ?it/s]
+Batches: 100%|##########| 1/1 [00:00<00:00, 86.64it/s]
+
+Batches:   0%|          | 0/1 [00:00<?, ?it/s]
+Batches: 100%|##########| 1/1 [00:00<00:00, 63.93it/s]
+
+Batches:   0%|          | 0/1 [00:00<?, ?it/s]
+Batches: 100%|##########| 1/1 [00:00<00:00, 48.74it/s]
+
+Batches:   0%|          | 0/1 [00:00<?, ?it/s]
+Batches: 100%|##########| 1/1 [00:00<00:00, 62.39it/s]
+
+Batches:   0%|          | 0/1 [00:00<?, ?it/s]
+Batches: 100%|##########| 1/1 [00:00<00:00, 99.98it/s]
+
+Batches:   0%|          | 0/1 [00:00<?, ?it/s]
+Batches: 100%|##########| 1/1 [00:00<00:00, 58.82it/s]
+
+Batches:   0%|          | 0/1 [00:00<?, ?it/s]
+Batches: 100%|##########| 1/1 [00:00<00:00, 86.82it/s]
+
+Batches:   0%|          | 0/1 [00:00<?, ?it/s]
+Batches: 100%|##########| 1/1 [00:00<00:00, 90.61it/s]
+
+Batches:   0%|          | 0/1 [00:00<?, ?it/s]
+Batches: 100%|##########| 1/1 [00:00<00:00, 95.12it/s]
+
+Batches:   0%|          | 0/1 [00:00<?, ?it/s]
+Batches: 100%|##########| 1/1 [00:00<00:00, 79.64it/s]
+
+Batches:   0%|          | 0/1 [00:00<?, ?it/s]
+Batches: 100%|##########| 1/1 [00:00<00:00, 90.87it/s]
+
+Batches:   0%|          | 0/1 [00:00<?, ?it/s]
+Batches: 100%|##########| 1/1 [00:00<00:00, 111.11it/s]
+
+Batches:   0%|          | 0/1 [00:00<?, ?it/s]
+Batches: 100%|##########| 1/1 [00:00<00:00, 105.08it/s]
+
+Batches:   0%|          | 0/1 [00:00<?, ?it/s]
+Batches: 100%|##########| 1/1 [00:00<00:00, 83.32it/s]
+
+Batches:   0%|          | 0/1 [00:00<?, ?it/s]
+Batches: 100%|##########| 1/1 [00:00<00:00, 83.33it/s]
+
+Batches:   0%|          | 0/1 [00:00<?, ?it/s]
+Batches: 100%|##########| 1/1 [00:00<00:00, 86.82it/s]
+
+Batches:   0%|          | 0/1 [00:00<?, ?it/s]
+Batches: 100%|##########| 1/1 [00:00<00:00, 83.32it/s]
+
+Batches:   0%|          | 0/1 [00:00<?, ?it/s]
+Batches: 100%|##########| 1/1 [00:00<00:00, 90.89it/s]
+
+Batches:   0%|          | 0/1 [00:00<?, ?it/s]
+Batches: 100%|##########| 1/1 [00:00<00:00, 76.91it/s]
+
+Batches:   0%|          | 0/1 [00:00<?, ?it/s]
+Batches: 100%|##########| 1/1 [00:00<00:00, 66.66it/s]
+
+Batches:   0%|          | 0/1 [00:00<?, ?it/s]
+Batches: 100%|##########| 1/1 [00:00<00:00, 73.73it/s]
+
+Batches:   0%|          | 0/1 [00:00<?, ?it/s]
+Batches: 100%|##########| 1/1 [00:00<00:00, 68.84it/s]
+
+Batches:   0%|          | 0/1 [00:00<?, ?it/s]
+Batches: 100%|##########| 1/1 [00:00<00:00, 64.45it/s]
+
+Batches:   0%|          | 0/1 [00:00<?, ?it/s]
+Batches: 100%|##########| 1/1 [00:00<00:00, 90.89it/s]
+
+Batches:   0%|          | 0/1 [00:00<?, ?it/s]
+Batches: 100%|##########| 1/1 [00:00<00:00, 86.80it/s]
+
+Batches:   0%|          | 0/1 [00:00<?, ?it/s]
+Batches: 100%|##########| 1/1 [00:00<00:00, 105.04it/s]
+
+Batches:   0%|          | 0/1 [00:00<?, ?it/s]
+Batches: 100%|##########| 1/1 [00:00<00:00, 64.47it/s]
+
+Batches:   0%|          | 0/1 [00:00<?, ?it/s]
+Batches: 100%|##########| 1/1 [00:00<00:00, 94.18it/s]
+
+Batches:   0%|          | 0/1 [00:00<?, ?it/s]
+Batches: 100%|##########| 1/1 [00:00<00:00, 87.28it/s]
+
+Batches:   0%|          | 0/1 [00:00<?, ?it/s]
+Batches: 100%|##########| 1/1 [00:00<00:00, 86.83it/s]
+
+Batches:   0%|          | 0/1 [00:00<?, ?it/s]
+Batches: 100%|##########| 1/1 [00:00<00:00, 58.81it/s]
+
+Batches:   0%|          | 0/1 [00:00<?, ?it/s]
+Batches: 100%|##########| 1/1 [00:00<00:00, 90.91it/s]
+
+Batches:   0%|          | 0/1 [00:00<?, ?it/s]
+Batches: 100%|##########| 1/1 [00:00<00:00, 64.47it/s]
+
+Batches:   0%|          | 0/1 [00:00<?, ?it/s]
+Batches: 100%|##########| 1/1 [00:00<00:00, 79.90it/s]
+
+Batches:   0%|          | 0/1 [00:00<?, ?it/s]
+Batches: 100%|##########| 1/1 [00:00<00:00, 71.42it/s]
+
+Batches:   0%|          | 0/1 [00:00<?, ?it/s]
+Batches: 100%|##########| 1/1 [00:00<00:00, 79.89it/s]
+
+Batches:   0%|          | 0/1 [00:00<?, ?it/s]
+Batches: 100%|##########| 1/1 [00:00<00:00, 76.92it/s]
+2026-05-09 07:24:17,429 [INFO] core.layer1_understanding.orchestrator: Latency: NER Inference took 5.70s
+2026-05-09 07:24:17,613 [INFO] core.layer1_understanding.orchestrator: Latency: NER Inference (Skills Section) took 0.18s
+2026-05-09 07:24:17,618 [INFO] core.layer1_understanding.orchestrator: Latency: Canonicalization took 0.00s
+2026-05-09 07:24:18,026 [INFO] core.layer1_understanding.experience_engine: Skill durations computed for 10 technologies (top 5: code structure=0.94y, Flutter.=0.94y, quality management mobile app=0.94y, UI design=0.94y, AI=0.17y).
+2026-05-09 07:24:18,026 [INFO] core.layer1_understanding.experience_engine: Career health: 1 gap(s) detected.
+2026-05-09 07:24:18,026 [INFO] core.layer1_understanding.experience_engine: Career health: 1 overlap(s) detected.
+2026-05-09 07:24:18,026 [INFO] core.layer1_understanding.experience_engine: Career health: 1 red flag(s) detected.
+
+Batches:   0%|          | 0/1 [00:00<?, ?it/s]
+Batches: 100%|##########| 1/1 [00:00<00:00, 30.19it/s]
+2026-05-09 07:24:18,070 [INFO] core.layer1_understanding.orchestrator: Layer 2 Classified Domain: Customer Service & Support (confidence=0.49)
+--- Logging error ---
+Traceback (most recent call last):
+  File "E:\Python311\Lib\logging\__init__.py", line 1113, in emit
+    stream.write(msg + self.terminator)
+  File "E:\Python311\Lib\encodings\cp1252.py", line 19, in encode
+    return codecs.charmap_encode(input,self.errors,encoding_table)[0]
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+UnicodeEncodeError: 'charmap' codec can't encode character '\u23f1' in position 71: character maps to <undefined>
+Call stack:
+  File "E:\Python311\Lib\threading.py", line 1002, in _bootstrap
+    self._bootstrap_inner()
+  File "E:\Python311\Lib\threading.py", line 1045, in _bootstrap_inner
+    self.run()
+  File "E:\Python311\Lib\threading.py", line 982, in run
+    self._target(*self._args, **self._kwargs)
+  File "E:\Python311\Lib\concurrent\futures\thread.py", line 83, in _worker
+    work_item.run()
+  File "E:\Python311\Lib\concurrent\futures\thread.py", line 58, in run
+    result = self.fn(*self.args, **self.kwargs)
+  File "E:\flutter_projects\Graduation-project\ai-cv-analyzer\core\layer1_understanding\orchestrator.py", line 148, in 
+process_cv
+    result = self._process_cv_unlocked(pdf_bytes, filename)
+  File "E:\flutter_projects\Graduation-project\ai-cv-analyzer\core\layer1_understanding\orchestrator.py", line 203, in 
+_process_cv_unlocked
+    logger.info("\u23f1 NLP Pipeline: %.1fms", nlp_ms)
+Message: '\u23f1 NLP Pipeline: %.1fms'
+Arguments: (7003.863399964757,)
+2026-05-09 07:24:18,072 [INFO] core.layer1_understanding.orchestrator: Pipeline total: 7550.0ms | status=success | file=Flutter Developer_CV_Ahmed_Khames .pdf.pdf
+2026-05-09 07:24:18,233 [INFO] careercompass.main: process_file completed in 18199ms
+Traceback (most recent call last):
+  File "E:\flutter_projects\Graduation-project\ai-cv-analyzer\main.py", line 304, in <module>
+    print(json.dumps(result, indent=2, ensure_ascii=False, default=str))
+  File "E:\Python311\Lib\encodings\cp1252.py", line 19, in encode
+    return codecs.charmap_encode(input,self.errors,encoding_table)[0]
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+UnicodeEncodeError: 'charmap' codec can't encode character '\ufdfa' in position 12820: character maps to <undefined>
