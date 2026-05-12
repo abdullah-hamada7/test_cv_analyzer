@@ -56,5 +56,47 @@
     ],
     "management_keywords": ["management", "lead", "strategy", "planning"],
     "management_exclusions": ["database", "state"]
+  },
+  "specialized_rules": {
+    "Technology & Software": {
+      "stacks": {
+        "Backend: Python": ["python", "django", "fastapi", "flask", "sqlalchemy", "pydantic"],
+        "Backend: Node.js": ["javascript", "nodejs", "node.js", "nestjs", "express", "fastify", "typescript", "prisma", "typeorm"],
+        "Backend: Java": ["java", "spring boot", "hibernate", "maven", "gradle", "jpa"],
+        "Backend: Go": ["go", "golang", "gin", "echo", "goroutines", "grpc"],
+        "Frontend: React": ["react", "next.js", "redux", "tailwind", "styled-components", "query"],
+        "Frontend: Vue": ["vue", "nuxt.js", "pinia", "vuex", "vuetify"],
+        "Frontend: Angular": ["angular", "rxjs", "ngrx", "typescript"],
+        "Mobile: Native iOS": ["swift", "swiftui", "combine", "uikit", "xcode"],
+        "Mobile: Native Android": ["kotlin", "jetpack compose", "coroutines", "dagger", "hilt"],
+        "Mobile: Cross-platform": ["flutter", "react native", "dart", "expo"]
+      },
+      "advanced": [
+        { "if": ["terraform", "kubernetes"], "then": "Advanced Cloud Automation: Proficiency in both Infrastructure-as-Code (Terraform) and Container Orchestration (Kubernetes)." },
+        { "if": ["pytorch", "tensorflow"], "then": "Deep Learning Specialist: Advanced proficiency in both PyTorch and TensorFlow frameworks." }
+      ]
+    },
+    "Healthcare & Medicine": {
+      "stacks": {
+        "Clinical Practice": ["diagnosis", "patient care", "clinical", "treatment", "nursing"],
+        "Surgical Expertise": ["surgery", "pre-operative", "post-operative", "operating room"],
+        "Pharmaceutical": ["pharmacology", "dosage", "medication", "clinical trials"]
+      },
+      "advanced": [
+        { "if": ["board certified", "residency"], "then": "Specialized Clinical Practitioner with recognized board certification." },
+        { "if": ["clinical trials", "research"], "then": "Medical Research Expert with experience in clinical methodology." }
+      ]
+    },
+    "Finance & Accounting": {
+      "stacks": {
+        "Accounting": ["cpa", "audit", "taxation", "financial reporting", "gaap", "ifrs"],
+        "Investment": ["cfa", "portfolio management", "asset allocation", "equities", "fixed income"],
+        "Risk Management": ["frm", "risk assessment", "compliance", "aml", "kyc"]
+      },
+      "advanced": [
+        { "if": ["cfa", "portfolio"], "then": "Investment Strategy Specialist (CFA candidate/holder)." },
+        { "if": ["cpa", "audit"], "then": "Certified Accounting Professional with audit expertise." }
+      ]
+    }
   }
 }

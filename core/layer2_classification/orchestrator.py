@@ -3,6 +3,7 @@ from typing import Dict, Any
 from core.layer2_classification.domain_engine import DomainEngine
 from core.layer2_classification.seniority_engine import SeniorityEngine
 from core.layer2_classification.skill_engine import SkillEngine
+from core.layer2_classification.specialized_intelligence import SpecializedIntelligenceEngine
 from core.layer2_classification.classifier import CVDomainClassifier
 
 logger = logging.getLogger(__name__)
@@ -17,6 +18,7 @@ class ClassificationOrchestrator:
         self._domain_engine = DomainEngine(classifier)
         self._seniority_engine = SeniorityEngine(classifier._embedder)
         self._skill_engine = SkillEngine()
+        self._specialized_intelligence = SpecializedIntelligenceEngine()
 
     def enrich_cv_analysis(self, cv_data: dict) -> dict:
         """
@@ -50,6 +52,13 @@ class ClassificationOrchestrator:
         cv_data["analysis"]["metadata"]["seniority_details"] = seniority_results
         cv_data["analysis"]["metadata"]["categorized_skills"] = categorized_skills
         cv_data["analysis"]["metadata"]["domain_scores"] = domain_scores
+        
+        # 4. Specialized Intelligence (Strengths & Insights)
+        specialized_strengths = self._specialized_intelligence.generate_strengths(cv_data)
+        if "strengths" not in cv_data["analysis"]:
+            cv_data["analysis"]["strengths"] = []
+        cv_data["analysis"]["strengths"].extend(specialized_strengths)
+        cv_data["analysis"]["strengths"] = list(dict.fromkeys(cv_data["analysis"]["strengths"])) # Deduplicate
         
         logger.info("✅ Layer 2: Enrichment complete. Seniority=%s, Domain=%s", 
                     seniority_results["level"], primary_domain)

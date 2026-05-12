@@ -97,6 +97,12 @@
       "supports", "offers", "includes", "provides", "allows", "enables", "features", "designed", "built",
       "developed", "created", "contains", "aims", "helps", "based on", "uses", "through", "and", "with", "for",
       "delivering", "managing", "tracking", "booking", "providing"
+    ],
+    "tech_noise": [
+      "aws", "docker", "kubernetes", "terraform", "linux", "cloud", "engineer", "devops",
+      "science", "computer", "university", "gpa", "honors", "degree", "b.sc", "m.sc",
+      "bash", "python", "scripting", "ansible", "jenkins", "git", "ci/cd",
+      "ec2", "s3", "rds", "vpc", "iam", "eks", "ecs", "fargate", "nginx", "postgresql"
     ]
   },
   "title_config": {

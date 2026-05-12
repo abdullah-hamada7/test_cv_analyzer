@@ -99,13 +99,12 @@ def _clean_location(raw: str) -> Optional[str]:
         
     # Phase 2: Tech Keyword Rejection for Location
     # If a location contains words like AWS, Docker, Kubernetes, it's likely a hallucination
-    TECH_NOISE = {
-        "aws", "docker", "kubernetes", "terraform", "linux", "cloud", "engineer", "devops",
-        "science", "computer", "university", "gpa", "honors", "degree", "b.sc", "m.sc",
-        "bash", "python", "scripting", "ansible", "jenkins", "git", "ci/cd",
-        "ec2", "s3", "rds", "vpc", "iam", "eks", "ecs", "fargate", "nginx", "postgresql"
-    }
+    # Load from config
+    l1_config = load_layer1_config()
+    TECH_NOISE = set(l1_config.get("contact_config", {}).get("tech_noise", []))
+    
     words = {w.lower().strip(".,:;•|()[]") for w in cleaned.split()}
+    # Generic tech substrings to catch (can also be moved to config in future)
     tech_substrings = ["aws", "terraform", "postgresql", "docker", "kubernetes", "ec2", "elastic ip", "vpc", "s3", "rds"]
     if any(noise in words for noise in TECH_NOISE) or any(ts in cleaned.lower() for ts in tech_substrings):
         return None

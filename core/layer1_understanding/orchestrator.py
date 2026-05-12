@@ -556,13 +556,6 @@ class CVOrchestrator:
         if len(skill_durations) >= 5:
             strengths.append(f"Diverse technical portfolio with {len(skill_durations)} technologies used across roles.")
             
-        # Cloud/DevOps Specific Intelligence
-        cloud_keywords = {"AWS", "Azure", "GCP", "Terraform", "Kubernetes", "Docker"}
-        identified_cloud = {s.name for s in skill_items if s.name in cloud_keywords}
-        if "Terraform" in identified_cloud and "Kubernetes" in identified_cloud:
-            strengths.append("Advanced Cloud Automation: Proficiency in both Infrastructure-as-Code (Terraform) and Container Orchestration (Kubernetes).")
-        elif "AWS" in identified_cloud:
-            strengths.append("Cloud native experience identified with AWS ecosystem.")
 
         stats = DocumentStats(
             page_count=page_count,
@@ -575,6 +568,11 @@ class CVOrchestrator:
         # Aggressive Header Parsing: Look for locations in lines with separators (| or •)
         final_location = contact_dict.get("location")
         if not final_location:
+            # Load config for location cleaning
+            l1_config = load_layer1_config()
+            tech_noise = l1_config.get("contact_config", {}).get("tech_noise", [])
+            tech_noise_set = set(tech_noise)
+            
             # Check first 5 lines for common location patterns or split by pipe
             for ln in first_lines:
                 if "|" in ln or "•" in ln:
@@ -582,10 +580,8 @@ class CVOrchestrator:
                     for p in parts:
                         # If a part looks like "City, Country"
                         p_low = p.lower()
-                        # Reject common tech noise in location
-                        TECH_NOISE = {"aws", "docker", "kubernetes", "terraform", "linux", "cloud", "engineer", "devops"}
                         if "," in p and len(p) < 30 and len(p.split()) <= 4:
-                            if not any(x in p_low for x in ["app", "short", "distance", "http", "www", "github"]) and not any(t in p_low for t in TECH_NOISE):
+                            if not any(x in p_low for x in ["app", "short", "distance", "http", "www", "github"]) and not any(t in p_low for t in tech_noise_set):
                                 final_location = p
                                 break
                 if final_location: break
